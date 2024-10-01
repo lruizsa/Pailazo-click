@@ -1,0 +1,73 @@
+/*Pailazoaren irudiari tamaina eman*/
+body img {
+    height: 300px; 
+    width: auto;  
+}
+
+/*Animazioaren urratsak definitzen ditu. Kasu horretan, irudia 0 gradutik 360 gradura pasarazten du.*/
+@keyframes biratu {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/*Irudiari "biratu" animazioa aplikatzen dio. Animazioak 2 segundo iraungo du, "linear" motakoa izango da (azeleraziorik gabe) eta amaigabe errepikatuko da.*/
+
+img {
+    animation: biratu 2s linear infinite;
+}
+
+@keyframes kolore {
+    0% {
+        color: red; /* Hasierako kolorea (Color inicial) */
+    }
+    25% {
+        color: rgb(255, 251, 0); /* Erdiko kolorea 1 */
+    }
+    50% {
+        color: rgb(59, 201, 23); /* Erdiko kolorea 2 */
+    }
+    75% {
+        color: rgb(106, 23, 201); /* Erdiko kolorea 3 */
+    }
+    100% {
+        color: rgb(23, 121, 201); /* Amaierako kolorea */
+    }
+}
+
+.zutabe1 h1 {
+    animation: kolore 3s linear infinite; 
+}
+
+.grid-container {
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); /*Hiru zutabe tamaina berekoak */
+    justify-items: center;
+    align-items: center; 
+    height: 100vh; 
+    gap: 20px; 
+    padding: 20px; 
+}
+
+.zutabe1, .zutabe2, .zutabe3, .zutabe4 {
+    background-color: #fff9a2; 
+    border: 1px solid #ccc; 
+    padding: 20px;
+    text-align: center; 
+    width: 100%; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+#pailazo {
+    cursor: pointer; /* Kurtsorea aldatu pailazoaren gainean jartzean. Haiseran gezia dago eta ondoren eskua */
+    transition: transform 0.2s; 
+}
+
+.kontagailua {
+    font-size: 2em; 
+    font-weight: bold; 
+    color: #333; 
+}
