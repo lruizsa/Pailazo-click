@@ -3,22 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./PailazoClicker.css" rel="stylesheet">
+    <link href="./css/PailazoClicker.css" rel="stylesheet">
     <title>Jokua</title>
+    <script type="module" src="./js/PailazoClicker.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
 </head>
 <body>
     <div class="grid-kontainerra">
         <div class="zutabe1">
             <h1>Txurruski pailazoa</h1>
-            <img id="pailazo" src="./pailazoa-removebg-preview.png" />
+            <img id="pailazo" src="./Irudiak/pailazoa-removebg-preview.png" />
             <h3>Irribarreen kontagailua</h3>
             <div id="kontagailua" class="kontagailua">0</div>
         </div>
 
         <div class="zutabe2">
 
-            <h1>Hemen hobekuntzak joango dira</h1>
-            <button onclick="globoak()">Globoak erosi</button>
+            <h1 id="globoak"></h1>
+            <button id="globoakButton">Globoak erosi</button>
 
         </div>
 
@@ -31,6 +34,6 @@
         </div>
     
     </div>
-    <script src="./PailazoClicker.js"></script>
+    
 </body>
 </html>
