@@ -20,7 +20,6 @@ class Globoa{
     }   
 
 
-
     globoErosi(){
         const container = document.getElementById("globoak");
         container.innerHTML = "Zenbat globo erosi dituzu? " + this.erosiak;

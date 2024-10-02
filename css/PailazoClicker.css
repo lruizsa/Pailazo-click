@@ -16,13 +16,13 @@ body img {
 
 /*Irudiari "biratu" animazioa aplikatzen dio. Animazioak 2 segundo iraungo du, "linear" motakoa izango da (azeleraziorik gabe) eta amaigabe errepikatuko da.*/
 
-img {
+.zutabe1 img {
     animation: biratu 2s linear infinite;
 }
 
 @keyframes kolore {
     0% {
-        color: red; /* Hasierako kolorea (Color inicial) */
+        color: red; /* Hasierako kolorea*/
     }
     25% {
         color: rgb(255, 251, 0); /* Erdiko kolorea 1 */
@@ -71,3 +71,10 @@ img {
     font-weight: bold; 
     color: #333; 
 }
+
+.zutabe2 img{
+    height: 70px; 
+    width: 75; 
+}
+
+

@@ -1,17 +1,34 @@
-class Karameluak{
-    constructor(){
-        this.irribarrea = 20; /* 10 irribarre segunduko  */
-        this.prezioa = 100; /* 100 irribarrerekin "barreak" erosteko aukera  */
+// Karamelua klasea
+class Karameluak {
+    constructor() {
+        this.irribarrea = 20; // Cantidad de irribarre por segundo
+        this.prezioa = 100; // Precio inicial de los goxokiak
+        this.erosiak = 0; // Contador de goxokiak comprados
     }
 
-    getIrribarrea(){
+    getIrribarrea() {
         return this.irribarrea;
     }
 
-    getPrezioa(){
+    getPrezioa() {
         return this.prezioa;
     }
 
+    erosi() {
+        this.erosiak++; // Incrementar el contador de goxokiak comprados
+        this.goxokiaErosi(); // Mostrar el número de goxokiak comprados
+    }
+
+    igoPrezioa() {
+        this.prezioa += 50; // Aumentar el precio en 50 irribarre
+    }
+
+    goxokiaErosi() {
+        const container = document.getElementById("goxoki");
+        container.innerHTML = "Zenbat goxoki erosi dituzu? " + this.erosiak; // Mostrar cuántos goxokiak se han comprado
+    }
+
+    
 }
 
 export default Karameluak;
