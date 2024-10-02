@@ -1,5 +1,8 @@
 import Globoa from "../js/globoakObjetua.js";
 import Karameluak from "./KarameluakObjetua.js";
+import Barrea from "../js/BarreakObjetua.js";
+
+
 
 // Pailazo eta kontagailuaren irudia hartu
 const pailazoAurpegi = document.getElementById('pailazo'); // Pailazoaren ID-a
@@ -52,6 +55,20 @@ function goxokiaErosi() {
 function erosita() {
     kont.textContent = kontatu; // Mostrar el valor actual del contador
 }
+//Barrea
+let barrea = new Barrea();
+barrea.barreaErosi();
+
+function barreaErosi(){
+    
+    if(kontatu>=barrea.getPrezioa()){
+        kontatu-=barrea.getPrezioa();
+        erosita();
+        barrea.erosi();
+        lanzarConfeti();
+    }
+}
+document.getElementById('barreakButton').addEventListener('click', barreaErosi);
 
 // Desactivar botón de globos si es necesario
 function globoDesaktibatu() {
