@@ -1,4 +1,5 @@
 import Globoa from "../js/globoakObjetua.js";
+import Barrea from "../js/BarreakObjetua.js";
 
 
 
@@ -21,9 +22,8 @@ pailazoAurpegi.addEventListener('click', () => {
 
 
 
-
+//Globoa
 let globo = new Globoa();
-globo.globoErosi();
 
 
 function globoaErosi(){
@@ -41,6 +41,20 @@ function erosita(){
 }
 document.getElementById('globoakButton').addEventListener('click', globoaErosi);
 
+//Barrea
+let barrea = new Barrea();
+barrea.barreaErosi();
+
+function barreaErosi(){
+    
+    if(kontatu>=barrea.getPrezioa()){
+        kontatu-=barrea.getPrezioa();
+        erosita();
+        barrea.erosi();
+        lanzarConfeti();
+    }
+}
+document.getElementById('barreakButton').addEventListener('click', barreaErosi);
 
 setInterval(() => {
     zenbatPuntu();
