@@ -13,17 +13,21 @@ class Globoa{
     getPrezioa(){
         return this.prezioa*(this.erosiak+1);
     }
+    getErosiak(){
+        return this.erosiak;
+    }
 
     erosi(){
         this.erosiak++;
-        this.globoErosi();
+        console.log('globoa erosi da')
+        // this.globoErosi();
     }   
 
 
-    globoErosi(){
-        const container = document.getElementById("globoak");
-        container.innerHTML = "Zenbat globo erosi dituzu? " + this.erosiak;
-    }
+    // globoErosi(){
+    //     const container = document.getElementById("globoak");
+    //     container.innerHTML = "Zenbat globo erosi dituzu? " + this.erosiak;
+    // }
     
 
 
