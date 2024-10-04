@@ -1,11 +1,12 @@
 import Globoa from "./globoakObjetua.js";
 import Goxokiak from "./GoxokiakObjetua.js";
+import Barrea from "./BarreaObjetua.js";
 
 // Pailazo eta kontagailuaren irudia hartu
 const pailazoAurpegiHTML = document.getElementById('pailazo'); 
 const kontHTML = document.getElementById('kontagailua'); 
 const globPrezHTML = document.getElementById('globoPrezioa'); 
-const barreakPrezHTML = document.getElementById('barreakPrezioa'); 
+const barreaPrezHTML = document.getElementById('barreaPrezioa'); 
 const goxokiPrezHTML = document.getElementById('goxokiPrezioa'); 
 let kontatu = 0; 
 
@@ -15,30 +16,32 @@ const musica = document.getElementById('musika');
 // Inicializa objetos
 let globo = new Globoa();
 let goxoki = new Goxokiak();
+let barrea = new Barrea();
 
 // Llama a las funciones en el intervalo
 setInterval(() => {
     zenbatIrribarre();
-    kontHTML.innerHTML = kontatu;
-    globPrezHTML.innerHTML = globo.getPrezioa();
-    //barreakPrezHTML.innerHTML = barrea.getPrezioa();
-    goxokiPrezHTML.innerHTML = goxoki.getPrezioa();
+    kontHTML.innerHTML = kontatu; // Actualiza el contador
+    globPrezHTML.innerHTML = globo.getPrezioa(); // Actualiza precio de globos
+    barreaPrezHTML.innerHTML = barrea.getPrezioa(); // Actualiza precio de Barrea
+    goxokiPrezHTML.innerHTML = goxoki.getPrezioa(); // Actualiza precio de goxoki
     globoDesaktibatu();
     goxokiDesaktibatu();
-
+    console.log('Prezioa: ' + barrea.getPrezioa() + ' Irribarreak: ' + barrea.getBarrea());
 }, 1000);
-
 
 // Listener para el clic en el pailazo
 pailazoAurpegiHTML.addEventListener('click', () => {
-    kontatu += 1; 
-    kontHTML.innerHTML = kontatu;
-    globPrezHTML.innerHTML = globo.getPrezioa();
+    kontatu += barrea.getBarrea(); // Suma el irribarrea de Barrea
+    kontHTML.innerHTML = kontatu; // Actualiza el contador
+    globPrezHTML.innerHTML = globo.getPrezioa(); // Actualiza precio de globos
+    barreaPrezHTML.innerHTML = barrea.getPrezioa(); // Actualiza precio de Barrea
+    goxokiPrezHTML.innerHTML = goxoki.getPrezioa(); // Actualiza precio de goxoki
 });
 
 // Función para incrementar el puntaje basado en los globos
 function zenbatIrribarre() {
-    kontatu += globo.getIrribarrea() + goxoki.getIrribarrea(); 
+    kontatu += globo.getIrribarrea() + goxoki.getIrribarrea(); // Suma irribarrea de globos y goxoki
 }
 
 // Listener para el botón de globos
@@ -47,12 +50,14 @@ document.getElementById('globoakButton').addEventListener('click', globoaErosi);
 // Listener para el botón de goxokiak
 document.getElementById('goxokiButton').addEventListener('click', goxokiaErosi);
 
+// Listener para el botón de barrea
+document.getElementById('barreaButton').addEventListener('click', barreaErosi);
+
 // Función para comprar globos
 function globoaErosi() {
     if (kontatu >= globo.getPrezioa()) {
-        kontatu = globo.erosi(kontatu);
-        
-        lanzarConfeti();
+        kontatu = globo.erosi(kontatu); 
+        lanzarConfeti(); // Lanza confeti
     }
 }
 
@@ -60,7 +65,15 @@ function globoaErosi() {
 function goxokiaErosi() {
     if (kontatu >= goxoki.getPrezioa()) {
         kontatu = goxoki.erosi(kontatu); 
-        lanzarConfeti();
+        lanzarConfeti(); // Lanza confeti
+    }
+}
+
+// Función para comprar barrea
+function barreaErosi() {
+    if (kontatu >= barrea.getPrezioa()) {
+        kontatu = barrea.erosi(kontatu); // Realiza la compra y actualiza kontatu
+        lanzarConfeti(); // Lanza confeti
     }
 }
 
@@ -73,7 +86,7 @@ function globoDesaktibatu() {
 // Desactivar botón de goxokiak si es necesario
 function goxokiDesaktibatu() {
     const goxokiButton = document.getElementById('goxokiButton');
-    goxokiButton.disabled = (kontatu < goxoki.getPrezioa() /*&& globo.getErosiak() < 10*/);
+    goxokiButton.disabled = (kontatu < goxoki.getPrezioa());
 }
 
 // Función para lanzar confeti
