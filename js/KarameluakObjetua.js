@@ -11,7 +11,7 @@ class Karameluak {
     }
 
     getPrezioa() {
-        return this.prezioa;
+        return this.prezioa*(this.erosiak+1);
     }
 
     erosi() {
@@ -25,7 +25,7 @@ class Karameluak {
 
     goxokiaErosi() {
         const container = document.getElementById("goxoki");
-        container.innerHTML = "Zenbat goxoki erosi dituzu? " + this.erosiak; // Mostrar cuántos goxokiak se han comprado
+        container.innerHTML = "Goxokiak: " + this.erosiak; // Mostrar cuántos goxokiak se han comprado
     }
 
     

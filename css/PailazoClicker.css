@@ -1,15 +1,52 @@
-body{
-   /* background-image: url('../Irudiak/6020305.jpg');*/
-    background-size: 100; 
+body {
+    background-size: cover; 
     background-position: center;
+    margin: 0; /* Elimina márgenes por defecto */
+    padding: 0; /* Elimina padding por defecto */
+    display: flex;
+    flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
+    align-items: center; /* Centra horizontalmente */
+    /*background-image:url('../Irudiak/circus.jpg');*/
+    /*background-size: contain; */
+    
 }
-/*Pailazoaren irudiari tamaina eman*/
+
+.musika-container {
+    margin-bottom: 20px; /* Espacio entre los botones y zutabe1 */
+}
+
+.grid-container {
+    display: flex; 
+    justify-content: center; 
+    align-items: flex-start; /* Cambia a flex-start para que no haya espacio extra en la parte inferior */
+    gap: 20px; 
+    padding: 20px; 
+    flex-wrap: wrap; /* Permite que los elementos se ajusten si es necesario */
+}
+
+.zutabe1, .zutabe2 {
+    background-color: #fff9a2; 
+    border: dashed 2px #ccc; 
+    padding: 20px;
+    text-align: center; 
+    width: 600px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.742); 
+    border-radius: 40px; 
+}
+
+.zutabe2 {
+    display: flex; 
+    flex-direction: column; 
+    height: auto; 
+}
+
+/* Pailazoaren irudiari tamaina eman */
 body img {
     height: 300px; 
     width: auto;  
 }
 
-/*Animazioaren urratsak definitzen ditu. Kasu horretan, irudia 0 gradutik 360 gradura pasarazten du.*/
+/* Animazioaren urratsak definitzen ditu. Kasu horretan, irudia 0 gradutik 360 gradura pasarazten du. */
 @keyframes biratu {
     0% {
         transform: rotate(0deg);
@@ -19,14 +56,14 @@ body img {
     }
 }
 
-/*Irudiari "biratu" animazioa aplikatzen dio. Animazioak 2 segundo iraungo du, "linear" motakoa izango da (azeleraziorik gabe) eta amaigabe errepikatuko da.*/
+/* Irudiari "biratu" animazioa aplikatzen dio. Animazioak 2 segundo iraungo du, "linear" motakoa izango da (azeleraziorik gabe) eta amaigabe errepikatuko da. */
 .zutabe1 img {
     animation: biratu 2s linear infinite;
 }
 
 @keyframes kolore {
     0% {
-        color: red; /* Hasierako kolorea*/
+        color: red; /* Hasierako kolorea */
     }
     25% {
         color: rgb(255, 251, 0); /* Erdiko kolorea 1 */
@@ -44,49 +81,6 @@ body img {
 
 .zutabe1 h1 {
     animation: kolore 3s linear infinite; 
-}
-
-
-.grid-container {
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    height: 100vh; 
-    gap: 20px; 
-    padding: 20px; 
-}
-
-.zutabe1 {
-    background-color: #fff9a2; 
-    border: 1px solid #ccc; 
-    padding: 20px;
-    text-align: center; 
-    width: 600px;
-    height: 600px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
-    border: dashed;
-    border-width: 2px 4px;
-    border-radius: 40px;
-}
-
-.zutabe2 {
-    background-color: #fff9a2; 
-    border: 1px solid #ccc; 
-    padding: 20px;
-    text-align: center; 
-    width: 500px; 
-    height: 600px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
-    border: dashed;
-    border-width: 2px 4px;
-    border-radius: 40px;
-    display: flex;
-    flex-direction: column; 
-}
-
-#pailazo {
-    cursor: pointer; /* Kurtsorea aldatu pailazoaren gainean jartzean. Haiseran gezia dago eta ondoren eskua */
-    transition: transform 0.2s; 
 }
 
 .kontagailua {
@@ -107,13 +101,11 @@ body img {
     justify-content: center; 
     align-items: center; 
     border-bottom: 1px solid #333; 
-
 }
 
 .errenkada1:last-child, .errenkada2:last-child, .errenkada3:last-child {
     border-bottom: none; 
 }
-
 
 button {
     font-size: 1.5em;
@@ -125,10 +117,6 @@ button {
     transition: background-color 0.3s;
 }
 
-
 button:hover {
     background-color: #ff9900; 
 }
-
-
-
