@@ -4,6 +4,9 @@ import Karameluak from "./KarameluakObjetua.js";
 // Pailazo eta kontagailuaren irudia hartu
 const pailazoAurpegiHTML = document.getElementById('pailazo'); 
 const kontHTML = document.getElementById('kontagailua'); 
+const globPrezHTML = document.getElementById('globoPrezioa'); 
+const barreakPrezHTML = document.getElementById('barreakPrezioa'); 
+const goxokiPrezHTML = document.getElementById('goxokiPrezioa'); 
 let kontatu = 0; 
 let goxokiComprados = 0; 
 
@@ -18,25 +21,19 @@ let goxoki = new Karameluak();
 setInterval(() => {
     zenbatIrribarre();
     kontHTML.innerHTML = kontatu;
+    globPrezHTML.innerHTML = globo.getPrezioa();
+    //barreakPrezHTML.innerHTML = barrea.getPrezioa();
+    goxokiPrezHTML.innerHTML = goxoki.getPrezioa();
     globoDesaktibatu();
     goxokiDesaktibatu();
 }, 1000);
 
-// Listener para el botón "Musika jarri"
-document.getElementById('musikaJarri').addEventListener('click', () => {
-    musica.play(); // Inicia la música
-});
-
-// Listener para el botón "Musika kendu"
-document.getElementById('musikaKendu').addEventListener('click', () => {
-    musica.pause(); // Detiene la música
-    musica.currentTime = 0; // Reinicia la música
-});
 
 // Listener para el clic en el pailazo
 pailazoAurpegiHTML.addEventListener('click', () => {
     kontatu += (goxokiComprados > 0) ? 100 : 1; 
     kontHTML.innerHTML = kontatu;
+    globPrezHTML.innerHTML = globo.getPrezioa();
 });
 
 // Función para incrementar el puntaje basado en los globos
@@ -57,8 +54,8 @@ document.getElementById('goxokiButton').addEventListener('click', goxokiaErosi);
 // Función para comprar globos
 function globoaErosi() {
     if (kontatu >= globo.getPrezioa()) {
-        kontatu -= globo.getPrezioa();
-        globo.erosi();
+        kontatu = globo.erosi(kontatu);
+        
         lanzarConfeti();
     }
 }
@@ -94,3 +91,14 @@ function lanzarConfeti() {
         origin: { y: 0.6 }
     });
 }
+
+// Listener para el botón "Musika jarri"
+document.getElementById('musikaJarri').addEventListener('click', () => {
+    musica.play(); // Inicia la música
+});
+
+// Listener para el botón "Musika kendu"
+document.getElementById('musikaKendu').addEventListener('click', () => {
+    musica.pause(); // Detiene la música
+    musica.currentTime = 0; // Reinicia la música
+});

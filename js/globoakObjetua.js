@@ -7,20 +7,23 @@ class Globoa {
     }
 
     getIrribarrea() {
-        return this.irribarrea * this.erosiak; // Multiplicar por los globos comprados
+        return this.irribarrea * this.erosiak; // Erositako globo kopurua bera gehituko da irribarre moduan
     }
 
     getPrezioa() {
-        return this.prezioa * (this.erosiak + 1); // Precio del siguiente globo
+        return this.prezioa;
     }
 
     getErosiak() {
         return this.erosiak; // Obtener el número de globos comprados
     }
 
-    erosi() {
+    erosi(kontatu) {
         this.erosiak++; // Incrementar el número de globos comprados
         this.globoErosi(); // Mostrar el número de globos comprados
+        kontatu = kontatu - this.prezioa;
+        this.prezioa = 10 * (this.erosiak + 1);
+        return kontatu;
     }
 
     globoErosi() {
