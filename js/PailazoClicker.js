@@ -1,5 +1,5 @@
 import Globoa from "./globoakObjetua.js";
-import Karameluak from "./KarameluakObjetua.js";
+import Goxokiak from "./GoxokiakObjetua.js";
 
 // Pailazo eta kontagailuaren irudia hartu
 const pailazoAurpegiHTML = document.getElementById('pailazo'); 
@@ -8,14 +8,13 @@ const globPrezHTML = document.getElementById('globoPrezioa');
 const barreakPrezHTML = document.getElementById('barreakPrezioa'); 
 const goxokiPrezHTML = document.getElementById('goxokiPrezioa'); 
 let kontatu = 0; 
-let goxokiComprados = 0; 
 
 // Obtener el elemento de audio
 const musica = document.getElementById('musika');
 
 // Inicializa objetos
 let globo = new Globoa();
-let goxoki = new Karameluak();
+let goxoki = new Goxokiak();
 
 // Llama a las funciones en el intervalo
 setInterval(() => {
@@ -26,23 +25,20 @@ setInterval(() => {
     goxokiPrezHTML.innerHTML = goxoki.getPrezioa();
     globoDesaktibatu();
     goxokiDesaktibatu();
+
 }, 1000);
 
 
 // Listener para el clic en el pailazo
 pailazoAurpegiHTML.addEventListener('click', () => {
-    kontatu += (goxokiComprados > 0) ? 100 : 1; 
+    kontatu += 1; 
     kontHTML.innerHTML = kontatu;
     globPrezHTML.innerHTML = globo.getPrezioa();
 });
 
 // Función para incrementar el puntaje basado en los globos
 function zenbatIrribarre() {
-    kontatu += globo.getIrribarrea(); 
-    // Añade irribarrea acumulativa basada en la cantidad de caramelos comprados
-    if (goxokiComprados > 0) {
-        kontatu += goxokiComprados * 20; // Suma 20 por cada caramelo comprado
-    }
+    kontatu += globo.getIrribarrea() + goxoki.getIrribarrea(); 
 }
 
 // Listener para el botón de globos
@@ -62,11 +58,8 @@ function globoaErosi() {
 
 // Función para comprar goxokiak
 function goxokiaErosi() {
-    const precioGoxoki = goxoki.getPrezioa(); 
-    if (kontatu >= precioGoxoki) {
-        kontatu -= precioGoxoki;
-        goxoki.erosi(); 
-        goxokiComprados++; 
+    if (kontatu >= goxoki.getPrezioa()) {
+        kontatu = goxoki.erosi(kontatu); 
         lanzarConfeti();
     }
 }
@@ -80,7 +73,7 @@ function globoDesaktibatu() {
 // Desactivar botón de goxokiak si es necesario
 function goxokiDesaktibatu() {
     const goxokiButton = document.getElementById('goxokiButton');
-    goxokiButton.disabled = (kontatu < goxoki.getPrezioa());
+    goxokiButton.disabled = (kontatu < goxoki.getPrezioa() /*&& globo.getErosiak() < 10*/);
 }
 
 // Función para lanzar confeti

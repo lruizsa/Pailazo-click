@@ -1,13 +1,12 @@
 // Pailazoa
 class Globoa {
     constructor() {
-        this.irribarrea = 1; /* Irribare bat segunduko */
         this.prezioa = 10; /* 10 irribarrerekin globo bat erosteko aukera */
         this.erosiak = 0; /* Zenbat objetu ditugun erosita */
     }
 
     getIrribarrea() {
-        return this.irribarrea * this.erosiak; // Erositako globo kopurua bera gehituko da irribarre moduan
+        return this.erosiak; // Erositako globo kopurua bera gehituko da irribarre moduan
     }
 
     getPrezioa() {
