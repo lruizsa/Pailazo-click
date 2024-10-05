@@ -14,12 +14,12 @@ class Globoa {
     }
 
     getErosiak() {
-        return this.erosiak; // Obtener el número de globos comprados
+        return this.erosiak; // Erositako globoen kopurua lortu
     }
 
     erosi(kontatu) {
-        this.erosiak++; // Incrementar el número de globos comprados
-        this.globoErosi(); // Mostrar el número de globos comprados
+        this.erosiak++; // Erositako globoen kopurua handitzea
+        this.globoErosi(); // Erakutsi erositako puxiken kopurua
         kontatu = kontatu - this.prezioa;
         this.prezioa = 10 * (this.erosiak + 1);
         return kontatu;
@@ -27,7 +27,7 @@ class Globoa {
 
     globoErosi() {
         const container = document.getElementById("globoak");
-        container.innerHTML = "Globoak: " + this.erosiak; // Actualizar el display
+        container.innerHTML = "Globoak: " + this.erosiak; // Display eguneratu
     }
 }
 

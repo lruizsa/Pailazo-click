@@ -1,8 +1,8 @@
-import Globoa from "./globoakObjetua.js";
-import Goxokiak from "./GoxokiakObjetua.js";
-import Barrea from "./BarreaObjetua.js";
+import Globoa from "./globoakObjetua.js"; //Klaseak inportatu
+import Goxokiak from "./GoxokiakObjetua.js"; //Klaseak inportatu
+import Barrea from "./BarreaObjetua.js"; //Klaseak inportatu
 
-// Pailazo eta kontagailuaren irudia hartu
+// Pailazo, kontagailu, globo, barrea eta goxokien elementua hartu
 const pailazoAurpegiHTML = document.getElementById('pailazo'); 
 const kontHTML = document.getElementById('kontagailua'); 
 const globPrezHTML = document.getElementById('globoPrezioa'); 
@@ -10,86 +10,93 @@ const barreaPrezHTML = document.getElementById('barreaPrezioa');
 const goxokiPrezHTML = document.getElementById('goxokiPrezioa'); 
 let kontatu = 0; 
 
-// Obtener el elemento de audio
+// Musika elementua hartu
 const musica = document.getElementById('musika');
 
-// Inicializa objetos
+// Objetuak inizializatu
 let globo = new Globoa();
 let goxoki = new Goxokiak();
 let barrea = new Barrea();
 
-// Llama a las funciones en el intervalo
+// Tarte horretan funtzioei deitu.
 setInterval(() => {
     zenbatIrribarre();
-    kontHTML.innerHTML = kontatu; // Actualiza el contador
-    globPrezHTML.innerHTML = globo.getPrezioa(); // Actualiza precio de globos
-    barreaPrezHTML.innerHTML = barrea.getPrezioa(); // Actualiza precio de Barrea
-    goxokiPrezHTML.innerHTML = goxoki.getPrezioa(); // Actualiza precio de goxoki
-    globoDesaktibatu();
-    goxokiDesaktibatu();
-    console.log('Prezioa: ' + barrea.getPrezioa() + ' Irribarreak: ' + barrea.getBarrea());
-}, 1000);
+    kontHTML.innerHTML = kontatu; // Kontagailua aktualizatzen du
+    globPrezHTML.innerHTML = globo.getPrezioa()+ " irribarre behar dituzu"; // Globoen prezioa aktualizatzen du
+    barreaPrezHTML.innerHTML = barrea.getPrezioa()+ " irribarre behar dituzu"; // Barrea-ren prezioa aktualizatzen du
+    goxokiPrezHTML.innerHTML = goxoki.getPrezioa()+ " irribarre behar dituzu"; // Goxoki-ren prezioa aktualizatzen du
+    globoDesaktibatu(); //funtzioek botoiak desaktibatzen dituzte, hau da, erabiltzaileak erosketa egin dezan esperoan egon behar dutela adierazten dute.
+    goxokiDesaktibatu(); //funtzioek botoiak desaktibatzen dituzte, hau da, erabiltzaileak erosketa egin dezan esperoan egon behar dutela adierazten dute.
+    barreaDesaktibatu(); //funtzioek botoiak desaktibatzen dituzte, hau da, erabiltzaileak erosketa egin dezan esperoan egon behar dutela adierazten dute.
+    //console.log('Prezioa: ' + barrea.getPrezioa() + ' Irribarreak: ' + barrea.getBarrea());
+}, 1000); //1000 milisegundo) igaro ondoren berriro exekutatuko dira
 
-// Listener para el clic en el pailazo
+// Pailazoan klik egitean....
 pailazoAurpegiHTML.addEventListener('click', () => {
-    kontatu += barrea.getBarrea(); // Suma el irribarrea de Barrea
-    kontHTML.innerHTML = kontatu; // Actualiza el contador
-    globPrezHTML.innerHTML = globo.getPrezioa(); // Actualiza precio de globos
-    barreaPrezHTML.innerHTML = barrea.getPrezioa(); // Actualiza precio de Barrea
-    goxokiPrezHTML.innerHTML = goxoki.getPrezioa(); // Actualiza precio de goxoki
+    kontatu += barrea.getBarrea(); // Barrearen irribarreak gehitu
+    kontHTML.innerHTML = kontatu; // Kontagailua aktualizatu
+    globPrezHTML.innerHTML = globo.getPrezioa(); // Globoen prezioa aktualizatu
+    barreaPrezHTML.innerHTML = barrea.getPrezioa(); // Barrearen prezioa aktualizatu
+    goxokiPrezHTML.innerHTML = goxoki.getPrezioa(); // Goxokien prezioa aktualizatu
 });
 
-// Función para incrementar el puntaje basado en los globos
+// Globoetan oinarritutako puntuazioa handitzeko funtzioa
 function zenbatIrribarre() {
-    kontatu += globo.getIrribarrea() + goxoki.getIrribarrea(); // Suma irribarrea de globos y goxoki
+    kontatu += globo.getIrribarrea() + goxoki.getIrribarrea(); // Globoen irribarrea eta goxokia
 }
 
-// Listener para el botón de globos
+// Globoen botoiarentzak listenerra --> klikatzean, globoaErosi funtzioari deituko dio
 document.getElementById('globoakButton').addEventListener('click', globoaErosi);
 
-// Listener para el botón de goxokiak
+// Goxokien botoiarentzak listenerra --> klikatzean, goxokiaErosi funtzioari deituko dio
 document.getElementById('goxokiButton').addEventListener('click', goxokiaErosi);
 
-// Listener para el botón de barrea
+// Barreen botoiarentzak listenerra --> klikatzean, barreaErosi funtzioari deituko dio
 document.getElementById('barreaButton').addEventListener('click', barreaErosi);
 
-// Función para comprar globos
+// Globoak erosteko funtzioa 
 function globoaErosi() {
     if (kontatu >= globo.getPrezioa()) {
         kontatu = globo.erosi(kontatu); 
-        lanzarConfeti(); // Lanza confeti
+        lanzarConfeti(); // Erostean konfetia bota
     }
 }
 
-// Función para comprar goxokiak
+// Goxokiak erosteko funtzioa 
 function goxokiaErosi() {
     if (kontatu >= goxoki.getPrezioa()) {
-        kontatu = goxoki.erosi(kontatu); 
-        lanzarConfeti(); // Lanza confeti
+        kontatu = goxoki.erosi(kontatu); //Erosketa egin eta kontatu aktualizatu
+        lanzarConfeti(); // Erostean konfetia bota
     }
 }
 
-// Función para comprar barrea
+// Barrea erosteko funtzioa 
 function barreaErosi() {
     if (kontatu >= barrea.getPrezioa()) {
-        kontatu = barrea.erosi(kontatu); // Realiza la compra y actualiza kontatu
-        lanzarConfeti(); // Lanza confeti
+        kontatu = barrea.erosi(kontatu); //Erosketa egin eta kontatu aktualizatu
+        lanzarConfeti(); // Erostean konfetia bota
     }
 }
 
-// Desactivar botón de globos si es necesario
+// Botoia desaktibatzeko
 function globoDesaktibatu() {
     const globoButton = document.getElementById('globoakButton');
     globoButton.disabled = (kontatu < globo.getPrezioa() || kontatu < 10);
 }
 
-// Desactivar botón de goxokiak si es necesario
+// Botoia desaktibatzeko
 function goxokiDesaktibatu() {
     const goxokiButton = document.getElementById('goxokiButton');
     goxokiButton.disabled = (kontatu < goxoki.getPrezioa());
 }
 
-// Función para lanzar confeti
+// Botoia desaktibatzeko
+function barreaDesaktibatu() {
+    const barreaButton = document.getElementById('barreaButton');
+    barreaButton.disabled = (kontatu < barrea.getPrezioa());
+}
+
+// Konfetia botatzeko funtzioa
 function lanzarConfeti() {
     confetti({
         particleCount: 100,
@@ -98,13 +105,13 @@ function lanzarConfeti() {
     });
 }
 
-// Listener para el botón "Musika jarri"
+// "Musika jarri" botoia sakatzerakoan musika hasten da
 document.getElementById('musikaJarri').addEventListener('click', () => {
-    musica.play(); // Inicia la música
+    musica.play(); // Musika hasi
 });
 
-// Listener para el botón "Musika kendu"
+// "Musika kendu" botoia sakatzerakoan musika bukatzen da
 document.getElementById('musikaKendu').addEventListener('click', () => {
-    musica.pause(); // Detiene la música
-    musica.currentTime = 0; // Reinicia la música
+    musica.pause(); // Musike gelditu
+    musica.currentTime = 0; // Musika berrabiarazten du
 });

@@ -1,27 +1,27 @@
 body {
     background-size: cover; 
     background-position: center;
-    margin: 0; /* Elimina márgenes por defecto */
-    padding: 0; /* Elimina padding por defecto */
+    margin: 0; 
+    padding: 0; 
     display: flex;
-    flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
-    align-items: center; /* Centra horizontalmente */
-    /*background-image:url('../Irudiak/circus.jpg');*/
-    /*background-size: contain; */
+    flex-direction: column; 
+    align-items: center;
+    background-image:url('../Irudiak/11200299.gif');
+    background-size: 6%;
     
 }
 
 .musika-container {
-    margin-bottom: 20px; /* Espacio entre los botones y zutabe1 */
+    margin-bottom: 20px; 
 }
 
 .grid-container {
     display: flex; 
     justify-content: center; 
-    align-items: flex-start; /* Cambia a flex-start para que no haya espacio extra en la parte inferior */
+    align-items: flex-start; 
     gap: 20px; 
     padding: 20px; 
-    flex-wrap: wrap; /* Permite que los elementos se ajusten si es necesario */
+    flex-wrap: wrap; 
 }
 
 .zutabe1, .zutabe2 {
@@ -79,7 +79,7 @@ body img {
     }
 }
 
-.zutabe1 h1 {
+.zutabe1 h2 {
     animation: kolore 3s linear infinite; 
 }
 
