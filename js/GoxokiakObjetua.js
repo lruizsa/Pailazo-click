@@ -1,13 +1,13 @@
 // Goxokiak klasea
 class Goxokiak {
     constructor() {
-        this.irribarrea = 0; // Cantidad de irribarre por segundo
-        this.prezioa = 200; // Precio inicial de los goxokiak
-        this.erosiak = 0; // Contador de goxokiak comprados
+        this.irribarrea = 0; // Segundoko irribarre kopurua
+        this.prezioa = 200; // Goxokien hasierako prezioa
+        this.erosiak = 0; // Erositako goxokien kontagailua
     }
 
     setIrribarrea(){
-        this.irribarrea += 10;
+        this.irribarrea += 10; // erosten den bakoitzeko , irribarrearen kostua 10 igo
     }
     getIrribarrea() {
         return this.irribarrea;
@@ -28,7 +28,10 @@ class Goxokiak {
     }
 
     igoPrezioa() {
-        this.prezioa += 100 * this.erosiak; // Aumentar el precio en 50 irribarre
+        // Prezio osoa handitzen du erositako kopuruaren arabera (erosiak).
+        // Erositako gaien kopurua (erosiak) bider 100
+        // eta egungo prezioari gehitzen dio (prezioa).
+        this.prezioa += 100 * this.erosiak; 
     }
     
 }

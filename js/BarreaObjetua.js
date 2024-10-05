@@ -1,9 +1,9 @@
 //Barreak
 class Barrea {
     constructor() {
-        this.irribarrea = 1; // Cantidad de irribarrea inicial por segundo
-        this.prezioa = 50; // Precio inicial para comprar Barrea
-        this.erosiak = 0; // Contador de Barrea compradas
+        this.irribarrea = 1; // Hasierako irribarrearen kantitatea segundoko
+        this.prezioa = 50; // Barrea erosteko hasierako prezioa
+        this.erosiak = 0; // Erositako Barreen kontagailua
     }
     
     setIrribarrea() {
@@ -16,16 +16,23 @@ class Barrea {
     }
 
     getPrezioa() {
-        return this.prezioa; // Devuelve el precio actual
+        return this.prezioa; // Momentuko prezioa itzultzen du
     }
 
     erosi(kontatu) {
-        this.erosiak++; // Incrementa el contador de compras
-        kontatu = kontatu - this.prezioa; // Resta el precio de kontatu
-        this.prezioa = Math.round(this.prezioa * 2.5); // Aumenta el precio
-        this.setIrribarrea(); // Actualiza la irribarrea
-        return kontatu; // Devuelve el nuevo valor de kontatu
+        this.erosiak++; // Erosketa-kontagailua handitzen du
+        kontatu = kontatu - this.prezioa; // Kontatuaren prezioa kentzen du
+        this.barreakErosi();
+        this.prezioa = Math.round(this.prezioa * 1.5); // Prezioak gora egiten du
+        this.setIrribarrea(); // Eguneratu irribarrea
+        return kontatu; // Kontatu-ren balio berria itzultzen du
     }   
+
+    // Zenbat barre erosi diren azaltzen du:
+    barreakErosi() {
+        const container = document.getElementById("barreak");
+        container.innerHTML = "Barreak: " + this.erosiak; 
+    }
 }
 
 export default Barrea;
