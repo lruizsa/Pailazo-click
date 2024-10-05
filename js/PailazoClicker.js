@@ -35,7 +35,7 @@ setInterval(() => {
     goxokiPrezHTML.innerHTML = goxoki.getPrezioa()+ " irribarre behar dituzu erosteko"; // Goxoki-ren prezioa aktualizatzen du
     barreHobekuntzaHTML.innerHTML = barrea.getIrribarrea() + " irribarre gehitzen ditu klik-ero";
     globIpSHTML.innerHTML = "Ekoizten dituen irribarreak/s: " +globo.getErosiak();
-    globoIehunHTML.innerHTML = "Ekoizten dituen ehunekoa: " + ehunekoaKalkulatu(globo) + "%"; // Porcentaje del globo
+    globoIehunHTML.innerHTML = "Ekoizten dituen ehunekoa: " + ehunekoaKalkulatu(globo) + "%"; // globoaren portzentaia
     goxokiIehunHTML.innerHTML = "Ekoizten dituen ehunekoa: " +ehunekoaKalkulatu(goxoki) + "%";
     goxokiIpSHTML.innerHTML = "Ekoizten dituen irribarreak/s: " + goxoki.getIrribarrea();
 
