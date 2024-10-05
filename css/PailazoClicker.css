@@ -94,14 +94,14 @@ body img {
     width: 95px; 
 }
 
-/* Añadir estilo para la fila contenedora (errenkada1) para alinear ambos elementos */
+/* errenkaden barrukoa bertilkalki ordenatu */
 .errenkada1, .errenkada2, .errenkada3 {
-    display: flex; /* Usar flexbox para alinear elementos */
-    align-items: center; /* Alinear verticalmente */
-    justify-content: space-around; /* Espacio entre columnas */
-    gap: 20px; /* Espacio entre los divs */
-    width: 100%; /* Ajustar al 100% de la columna */
-    border-bottom: 1px solid #333; /* Línea divisoria opcional */
+    display: flex; 
+    align-items: center; 
+    justify-content: space-around; 
+    gap: 20px; 
+    width: 100%; 
+    border-bottom: 1px solid #333; 
 }
 
 #zutabe11, #zutabe12, #zutabe21, #zutabe22, #zutabe31, #zutabe32 {

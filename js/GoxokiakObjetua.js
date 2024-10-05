@@ -29,7 +29,7 @@ class Goxokiak {
 
     igoPrezioa() {
         // Prezio osoa handitzen du erositako kopuruaren arabera (erosiak).
-        // Erositako gaien kopurua (erosiak) bider 100
+        // Erositako gaien kopurua (erosiak) bider 200
         // eta egungo prezioari gehitzen dio (prezioa).
         this.prezioa += 200 * this.erosiak; 
     }
