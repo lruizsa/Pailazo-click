@@ -94,16 +94,24 @@ body img {
     width: 95px; 
 }
 
+/* Añadir estilo para la fila contenedora (errenkada1) para alinear ambos elementos */
 .errenkada1, .errenkada2, .errenkada3 {
-    width: 100%; 
-    display: flex; 
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center; 
-    border-bottom: 1px solid #333; 
+    display: flex; /* Usar flexbox para alinear elementos */
+    align-items: center; /* Alinear verticalmente */
+    justify-content: space-around; /* Espacio entre columnas */
+    gap: 20px; /* Espacio entre los divs */
+    width: 100%; /* Ajustar al 100% de la columna */
+    border-bottom: 1px solid #333; /* Línea divisoria opcional */
 }
 
-.errenkada1:last-child, .errenkada2:last-child, .errenkada3:last-child {
+#zutabe11, #zutabe12, #zutabe21, #zutabe22, #zutabe31, #zutabe32 {
+    display: flex; 
+    flex-direction: column; 
+    height: auto; 
+    align-items: center;
+}
+
+.errenkada2:last-child, .errenkada3:last-child {
     border-bottom: none; 
 }
 

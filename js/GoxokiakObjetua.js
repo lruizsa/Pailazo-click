@@ -2,7 +2,7 @@
 class Goxokiak {
     constructor() {
         this.irribarrea = 0; // Segundoko irribarre kopurua
-        this.prezioa = 200; // Goxokien hasierako prezioa
+        this.prezioa = 500; // Goxokien hasierako prezioa
         this.erosiak = 0; // Erositako goxokien kontagailua
     }
 
@@ -31,7 +31,7 @@ class Goxokiak {
         // Prezio osoa handitzen du erositako kopuruaren arabera (erosiak).
         // Erositako gaien kopurua (erosiak) bider 100
         // eta egungo prezioari gehitzen dio (prezioa).
-        this.prezioa += 100 * this.erosiak; 
+        this.prezioa += 200 * this.erosiak; 
     }
     
 }

@@ -1,8 +1,8 @@
 //Barreak
 class Barrea {
     constructor() {
-        this.irribarrea = 1; // Hasierako irribarrearen kantitatea segundoko
-        this.prezioa = 50; // Barrea erosteko hasierako prezioa
+        this.irribarrea = 0; // Hasierako irribarrearen kantitatea segundoko
+        this.prezioa = 100; // Barrea erosteko hasierako prezioa
         this.erosiak = 0; // Erositako Barreen kontagailua
     }
     
@@ -11,7 +11,7 @@ class Barrea {
         this.irribarrea = this.irribarrea + 5 ;
     }
 
-    getBarrea() {
+    getIrribarrea() {
         return this.irribarrea;
     }
 
@@ -23,7 +23,7 @@ class Barrea {
         this.erosiak++; // Erosketa-kontagailua handitzen du
         kontatu = kontatu - this.prezioa; // Kontatuaren prezioa kentzen du
         this.barreakErosi();
-        this.prezioa = Math.round(this.prezioa * 1.5); // Prezioak gora egiten du
+        this.prezioa = Math.round(this.prezioa * 4); // Prezioak gora egiten du
         this.setIrribarrea(); // Eguneratu irribarrea
         return kontatu; // Kontatu-ren balio berria itzultzen du
     }   

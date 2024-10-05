@@ -7,9 +7,15 @@ const pailazoAurpegiHTML = document.getElementById('pailazo');
 const kontHTML = document.getElementById('kontagailua'); 
 const globPrezHTML = document.getElementById('globoPrezioa'); 
 const globIpSHTML = document.getElementById('globoIpS'); 
+const globoIehunHTML = document.getElementById('globoIehun'); 
 const barreaPrezHTML = document.getElementById('barreaPrezioa'); 
+const barreHobekuntzaHTML = document.getElementById('barreHobekuntza'); 
 const goxokiPrezHTML = document.getElementById('goxokiPrezioa'); 
+const goxokiIpSHTML = document.getElementById('goxokiIpS'); 
+const goxokiIehunHTML = document.getElementById('goxokiIehun'); 
+const IpSTotalaHTML = document.getElementById('IpSTotala'); 
 let kontatu = 0; 
+let IpSTotala = 0;
 
 // Musika elementua hartu
 const musica = document.getElementById('musika');
@@ -23,27 +29,40 @@ let barrea = new Barrea();
 setInterval(() => {
     zenbatIrribarre();
     kontHTML.innerHTML = kontatu; // Kontagailua aktualizatzen du
-    globPrezHTML.innerHTML = globo.getPrezioa()+ " irribarre behar dituzu"; // Globoen prezioa aktualizatzen du
-    barreaPrezHTML.innerHTML = barrea.getPrezioa()+ " irribarre behar dituzu"; // Barrea-ren prezioa aktualizatzen du
-    goxokiPrezHTML.innerHTML = goxoki.getPrezioa()+ " irribarre behar dituzu"; // Goxoki-ren prezioa aktualizatzen du
+    IpSTotalaHTML.innerHTML = IpSTotala + " irribarre segunduko";
+    globPrezHTML.innerHTML = globo.getPrezioa()+ " irribarre behar dituzu erosteko"; // Globoen prezioa aktualizatzen du
+    barreaPrezHTML.innerHTML = barrea.getPrezioa()+ " irribarre behar dituzu erosteko"; // Barrea-ren prezioa aktualizatzen du
+    goxokiPrezHTML.innerHTML = goxoki.getPrezioa()+ " irribarre behar dituzu erosteko"; // Goxoki-ren prezioa aktualizatzen du
+    barreHobekuntzaHTML.innerHTML = barrea.getIrribarrea() + " irribarre gehitzen ditu klik-ero";
+    globIpSHTML.innerHTML = "Ekoizten dituen irribarreak/s: " +globo.getErosiak();
+    globoIehunHTML.innerHTML = "Ekoizten dituen ehunekoa: " + ehunekoaKalkulatu(globo) + "%"; // Porcentaje del globo
+    goxokiIehunHTML.innerHTML = "Ekoizten dituen ehunekoa: " +ehunekoaKalkulatu(goxoki) + "%";
+    goxokiIpSHTML.innerHTML = "Ekoizten dituen irribarreak/s: " + goxoki.getIrribarrea();
+
     globoDesaktibatu(); //funtzioek botoiak desaktibatzen dituzte, hau da, erabiltzaileak erosketa egin dezan esperoan egon behar dutela adierazten dute.
     goxokiDesaktibatu(); //funtzioek botoiak desaktibatzen dituzte, hau da, erabiltzaileak erosketa egin dezan esperoan egon behar dutela adierazten dute.
     barreaDesaktibatu(); //funtzioek botoiak desaktibatzen dituzte, hau da, erabiltzaileak erosketa egin dezan esperoan egon behar dutela adierazten dute.
-    //console.log('Prezioa: ' + barrea.getPrezioa() + ' Irribarreak: ' + barrea.getBarrea());
+    IpSTotala = globo.getErosiak() + goxoki.getIrribarrea();
 }, 1000); //1000 milisegundo) igaro ondoren berriro exekutatuko dira
 
 // Pailazoan klik egitean....
 pailazoAurpegiHTML.addEventListener('click', () => {
-    kontatu += barrea.getBarrea(); // Barrearen irribarreak gehitu
+    kontatu += 1 + barrea.getIrribarrea(); // Barrearen irribarreak gehitu
     kontHTML.innerHTML = kontatu; // Kontagailua aktualizatu
-    globPrezHTML.innerHTML = globo.getPrezioa(); // Globoen prezioa aktualizatu
-    barreaPrezHTML.innerHTML = barrea.getPrezioa(); // Barrearen prezioa aktualizatu
-    goxokiPrezHTML.innerHTML = goxoki.getPrezioa(); // Goxokien prezioa aktualizatu
 });
 
 // Globoetan oinarritutako puntuazioa handitzeko funtzioa
 function zenbatIrribarre() {
     kontatu += globo.getIrribarrea() + goxoki.getIrribarrea(); // Globoen irribarrea eta goxokia
+}
+
+// Objetu bat jaso eta bere irribarre ekoizpenaren ehuneko bueltatzen du
+function ehunekoaKalkulatu(objetu) {
+    if (IpSTotala > 0) {
+        return ((objetu.getIrribarrea() / IpSTotala) * 100).toFixed(2);
+    } else {
+        return 0; 
+    }
 }
 
 // Globoen botoiarentzak listenerra --> klikatzean, globoaErosi funtzioari deituko dio
