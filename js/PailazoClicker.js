@@ -6,6 +6,7 @@ import Barrea from "./BarreaObjetua.js";
 const pailazoAurpegiHTML = document.getElementById('pailazo'); 
 const kontHTML = document.getElementById('kontagailua'); 
 const globPrezHTML = document.getElementById('globoPrezioa'); 
+const globIpSHTML = document.getElementById('globoIpS'); 
 const barreaPrezHTML = document.getElementById('barreaPrezioa'); 
 const goxokiPrezHTML = document.getElementById('goxokiPrezioa'); 
 let kontatu = 0; 
@@ -23,7 +24,9 @@ setInterval(() => {
     zenbatIrribarre();
     kontHTML.innerHTML = kontatu; // Actualiza el contador
     globPrezHTML.innerHTML = globo.getPrezioa(); // Actualiza precio de globos
+    globIpSHTML.innerHTML = globo.getIrribarrea();    
     barreaPrezHTML.innerHTML = barrea.getPrezioa(); // Actualiza precio de Barrea
+    goxokiPrezHTML.innerHTML = goxoki.getPrezioa(); // Actualiza precio de goxoki
     goxokiPrezHTML.innerHTML = goxoki.getPrezioa(); // Actualiza precio de goxoki
     globoDesaktibatu();
     goxokiDesaktibatu();

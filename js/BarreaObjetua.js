@@ -8,7 +8,7 @@ class Barrea {
     
     setIrribarrea() {
         // Mejora la cantidad de irribarrea
-        this.irribarrea = (this.irribarrea * 4 )- Math.round(this.erosiak * 1.5);
+        this.irribarrea = this.irribarrea + 5 ;
     }
 
     getBarrea() {
@@ -22,7 +22,7 @@ class Barrea {
     erosi(kontatu) {
         this.erosiak++; // Incrementa el contador de compras
         kontatu = kontatu - this.prezioa; // Resta el precio de kontatu
-        this.prezioa = Math.round(this.prezioa * 1.5); // Aumenta el precio
+        this.prezioa = Math.round(this.prezioa * 2.5); // Aumenta el precio
         this.setIrribarrea(); // Actualiza la irribarrea
         return kontatu; // Devuelve el nuevo valor de kontatu
     }   
